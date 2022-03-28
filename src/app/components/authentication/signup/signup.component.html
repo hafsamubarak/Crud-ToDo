@@ -1,0 +1,150 @@
+<div class="forma d-flex">
+  <form style="width: 30%" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <h1
+      style="
+        font-weight: bold;
+        color: #38b9db;
+        margin-bottom: 10%;
+        text-align: center;
+      "
+    >
+      Sign UP
+    </h1>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3" style="color: #004f71"
+        >First Name</label
+      >
+      <input
+        type="text"
+        id="form3Example3"
+        class="form-control"
+        formControlName="displayName"
+        required
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          signupForm.controls['displayName'].dirty &&
+          signupForm.hasError('required', 'displayName')
+        "
+        >*First Name is Required!</span
+      >
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="displayName2" style="color: #004f71"
+        >Second Name</label
+      >
+      <input type="text" id="displayName2" class="form-control" />
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3" style="color: #004f71"
+        >Email address</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        required
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          signupForm.controls['email'].dirty &&
+          signupForm.hasError('required', 'email')
+        "
+        >*Email is Required!</span
+      >
+    </div>
+    <!-- Password input -->
+    <div class="form-outline mb-4 input-group">
+      <label class="form-label" for="form3Example4" style="color: #004f71"
+        >Password</label
+      >
+      <input
+        [type]="fieldTextType ? 'text' : 'password'"
+        class="form-control"
+        formControlName="password"
+        required
+      />
+      <div class="input-group-append">
+        <span class="input-group-text" style="height: 100%">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-eye-slash': !fieldTextType,
+              'fa-eye': fieldTextType
+            }"
+            (click)="toggle()"
+          ></i>
+        </span>
+      </div>
+      <span
+        class="text-danger"
+        *ngIf="
+          signupForm.controls['password'].dirty &&
+          signupForm.hasError('required', 'password')
+        "
+        >*Password is Required!</span
+      >
+    </div>
+    <div class="form-outline mb-4 input-group">
+      <label class="form-label" for="password2" style="color: #004f71"
+        >Confirm Password</label
+      >
+      <input
+        [type]="repeatFieldTextType ? 'text' : 'password'"
+        class="form-control"
+        id="password2"
+        formControlName="confirmPassword"
+        required
+      />
+      <div class="input-group-append">
+        <span class="input-group-text" style="height: 100%">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-eye-slash': !repeatFieldTextType,
+              'fa-eye': repeatFieldTextType
+            }"
+            (click)="toggleRepeat()"
+          ></i>
+        </span>
+      </div>
+      <span
+        class="text-danger"
+        *ngIf="
+          signupForm.controls['confirmPassword'].dirty &&
+          signupForm.hasError('required', 'confirmPassword')
+        "
+        >*Password Confirm is Required!</span
+      >
+      <span
+        class="text-danger"
+        *ngIf="signupForm.errors?.['confirmPasswordValidator']"
+        >Confirm Password doesn't match!</span
+      >
+    </div>
+
+    <!-- Submit button -->
+    <div class="d-flex">
+      <button
+        type="button"
+        class="btn justify-content-center"
+        style="
+          background-color: #004f71;
+          color: white;
+          margin-left: 40%;
+          margin-bottom: 5%;
+        "
+        type="submit"
+        [disabled]="!signupForm.valid"
+      >
+        Sign up
+      </button>
+    </div>
+  </form>
+</div>
