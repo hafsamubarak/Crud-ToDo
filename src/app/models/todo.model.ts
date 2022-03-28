@@ -1,3 +1,4 @@
+import { User } from "./user.model";
 
 export interface Todo{
   id?:string,
@@ -7,4 +8,5 @@ export interface Todo{
   priority:string,
   created:any,
   description?:string,
+  email?:User|string
 }

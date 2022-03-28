@@ -13,7 +13,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class TodoAddComponent implements OnInit {
   todoForm!:FormGroup;
-  to:Todo[]=[];
+  to!:Todo;
   user!:User
 
   constructor(private todoService:TodosService,private formBuilder:FormBuilder,private router:Router,private activatedRoute:ActivatedRoute,private userService:UserService) { }
@@ -37,12 +37,12 @@ export class TodoAddComponent implements OnInit {
     if(!this.todoForm.valid){
       return;
     }
-    const todo:Todo={
+    const todo={
       title:this.todoForm.value.title,
       description:this.todoForm.value.description,
       priority:this.todoForm.value.priority,
       date:this.todoForm.value.date,
-      created:new Date(),
+      created:new Date().toUTCString(),
       status:true,
     };
     console.log(todo);

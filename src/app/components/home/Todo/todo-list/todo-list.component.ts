@@ -9,20 +9,27 @@ import { Todo } from 'src/app/models/todo.model';
 })
 export class TodoListComponent implements OnInit {
   public todos:any[]=[];
-  todo!:Todo;
-  cards!:Todo[];
+  todo!:Todo[];
 
   constructor(private todoService:TodosService) { }
 
   ngOnInit(): void {
-  }
-  findAllTodos(){
     this.todoService.findAllTodos().subscribe(res=>{
-      this.todos=res;
-    });
+      this.todo=res.map(actions=>{
+        const data=actions.payload.doc.data() as Todo;
+        data.id=actions.payload.doc.id;
+        return{...data}
+      })
+      console.log(this.todo)
+    })
   }
-  updateTodo(id:string){
-    this.todoService.updateTodo(id,{status:false});
-  }
+  // findAllTodos(){
+  //   this.todoService.findAllTodos().subscribe(res=>{
+  //     this.todos=res;
+  //   });
+  // }
+  // updateTodo(id:string){
+  //   this.todoService.updateTodo(id,{status:false});
+  // }
 
 }
