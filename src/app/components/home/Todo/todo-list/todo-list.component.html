@@ -1,1 +1,10 @@
-<app-card *ngFor="let card of todo" [todo]="card"></app-card>
+<div>
+  <input
+    type="text"
+    class="form-control search"
+    placeholder="serach for todos by title"
+    [(ngModel)]="title"
+    (input)="search()"
+  />
+</div>
+<app-card *ngFor="let card of todos" [todo]="card"></app-card>

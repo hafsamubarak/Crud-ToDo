@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Todo } from 'src/app/models/todo.model';
 import { User } from 'src/app/models/user.model';
+import { AuthentictionService } from 'src/app/service/authentiction.service';
 import { TodosService } from 'src/app/service/todos.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -16,14 +17,17 @@ export class TodoAddComponent implements OnInit {
   to!:Todo;
   user!:User
 
-  constructor(private todoService:TodosService,private formBuilder:FormBuilder,private router:Router,private activatedRoute:ActivatedRoute,private userService:UserService) { }
+  constructor(private todoService:TodosService,private formBuilder:FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
+    console.log(localStorage.getItem('user'))
     this.todoForm=this.formBuilder.group({
       title:['',Validators.required],
       priority:['',Validators.required],
       date:['',Validators.required],
-      description:['']
+      description:[''],
+      status:[''],
+      created:['']
     })
     // this.todoService.findAllTodos().subscribe(res =>{
     //   this.to=res.map(actions=>{
@@ -44,6 +48,7 @@ export class TodoAddComponent implements OnInit {
       date:this.todoForm.value.date,
       created:new Date().toUTCString(),
       status:true,
+      uid:localStorage.getItem('user')
     };
     console.log(todo);
     // const id=localStorage.getItem('user') as string;

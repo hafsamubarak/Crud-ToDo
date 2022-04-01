@@ -8,9 +8,9 @@ import { Todo } from 'src/app/models/todo.model';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  public todos:any[]=[];
+  public todos:Todo[]=[];
   todo!:Todo[];
-
+  title!:string;
   constructor(private todoService:TodosService) { }
 
   ngOnInit(): void {
@@ -20,8 +20,20 @@ export class TodoListComponent implements OnInit {
         data.id=actions.payload.doc.id;
         return{...data}
       })
-      console.log(this.todo)
+
+      this.todos=
+      this.todo.filter(res=>res.uid ==localStorage.getItem('user'));
+      console.log(this.todos);
     })
+  }
+  search(){
+    if(this.title !=""){
+      this.todos=this.todos.filter(res=>{
+        return res.title.toLowerCase().match(this.title.toLowerCase());
+      })
+    }else if(this.title==""){
+      this.ngOnInit();
+    }
   }
   // findAllTodos(){
   //   this.todoService.findAllTodos().subscribe(res=>{

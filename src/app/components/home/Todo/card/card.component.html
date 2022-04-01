@@ -1,10 +1,20 @@
 <div class="card mb-2">
   <div>
-    <h4 class="card-title ps-3">Title: {{ todo.title }}</h4>
+    <h4 class="card-title ps-3" [ngClass]="{ status: todo.status }">
+      Title: {{ todo.title }}
+    </h4>
     <p class="mb-1 ps-3">Description: {{ todo.description }}</p>
     <p>priority: {{ todo.priority }}</p>
     <p>status:{{ todo.status }}</p>
     <p>created date: {{ todo.created }}</p>
     <p>due date: {{ todo.date }}</p>
   </div>
+  <button class="btn btn-danger" (click)="remove(todo.id)">Delete</button>
+  <button class="btn btn-success" routerLink="../editTodo/{{ todo.id }}">
+    Edit
+  </button>
+  <button *ngIf="todo.status" (click)="toggleStatus(false)">Completed</button>
+  <button *ngIf="!todo.status" (click)="toggleStatus(true)">
+    Not Completed
+  </button>
 </div>

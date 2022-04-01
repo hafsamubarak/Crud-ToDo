@@ -13,16 +13,29 @@ export class TodosService {
   findAllTodos(){
     return this.angularFireStore.collection(this.dbPath).snapshotChanges();
   }
-  updateTodo(id:string,obj:any ){
-    return this.angularFireStore.collection(this.dbPath).doc(id).update({'Todos':obj})
+  getTodo(id:any){
+    return this.angularFireStore.collection(this.dbPath).doc(id).valueChanges();
+  }
+   updateTodo(todo:Todo){
+     console.log(todo)
+    return this.angularFireStore.collection(this.dbPath).doc(todo.id).update({title:todo.title,description:todo.description,priority:todo.priority})
+    // return this.angularFireStore.collection(this.dbPath).doc(id).update({'Todos':obj})
+    // return this.angularFireStore.collection(this.dbPath).doc(todoId.id).update(todoId)
   }
   createTodo(todo:Todo){
     return this.angularFireStore.collection(this.dbPath).add(todo);
   }
-  // findLastCreatedTodos(limit:number){
-  //   return  this.angularFireStore.collection('Todos', ref =>
-  //        ref.orderBy('date', 'desc').limit(limit)).snapshotChanges();
-  // }
+  removeTodo(id:any){
+    return this.angularFireStore.doc('Todos/'+id).delete();
+  }
+  findLastCreatedTodos(limit:number){
+    return  this.angularFireStore.collection('Todos', ref =>
+         ref.orderBy('date', 'desc').limit(limit)).snapshotChanges();
+  }
+  findFirstCreatedTodos(limit:number){
+    return this.angularFireStore.collection('Todos',ref =>
+    ref.orderBy('date','asc').limit(limit)).snapshotChanges();
+  }
   // findAllTodos(){
   //   return this.angularFireStore.collection('Todos',ref=>
   //   ref.orderBy('date','desc')).snapshotChanges();

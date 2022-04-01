@@ -19,6 +19,8 @@ import { ForgetPasswordComponent } from './authentication/forget-password/forget
 import { TodoAddComponent } from './components/home/Todo/todo-add/todo-add.component';
 import { TodoListComponent } from './components/home/Todo/todo-list/todo-list.component';
 import { CardComponent } from './components/home/Todo/card/card.component';
+import { EditTodoComponent } from './components/home/Todo/edit-todo/edit-todo.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,8 @@ import { CardComponent } from './components/home/Todo/card/card.component';
     TodoAddComponent,
     TodoListComponent,
     CardComponent,
+    EditTodoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

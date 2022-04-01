@@ -14,7 +14,7 @@ export class AuthentictionService {
     this.firebaseAuth.authState.subscribe(user=>{
       if(user){
         this.userData=user;
-        localStorage.setItem('user',this.userData.email);
+        localStorage.setItem('user',this.userData.uid);
         localStorage.getItem('user');
       }
     })
