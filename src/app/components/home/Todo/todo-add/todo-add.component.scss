@@ -1,0 +1,20 @@
+.container{
+  margin-top: 78px;
+  .h6{
+    text-align: center
+  }
+
+.form-control,.form-group{
+  margin-bottom: 20px;
+}
+.priority{
+  display: flex;
+
+  .single{
+    padding-right: 20px;
+  }
+}
+.label,.none{
+  display: none;
+}
+}

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { SignupComponent } from './components/authentication/signup/signup.component';
+import { UserProfileComponent } from './components/authentication/user-profile/user-profile.component';
 import { VerifyEmailComponent } from './components/authentication/verify-email/verify-email.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditTodoComponent } from './components/home/Todo/edit-todo/edit-todo.component';
@@ -20,8 +21,9 @@ const routes: Routes = [
   {path:'verify-email-address',component:VerifyEmailComponent},
   {path:'forgot-password',component:ForgetPasswordComponent},
   {path:'todoAdd',component:TodoAddComponent},
-  {path:'todoList',component:TodoListComponent},
+  {path:'todoList',component:TodoListComponent,canActivate:[AuthGuard]},
   {path:'editTodo/:id',component:EditTodoComponent},
+  {path:'userProfile',component:UserProfileComponent,canActivate:[AuthGuard]},
   {path:'**',redirectTo:''}
 ];
 

@@ -1,20 +1,37 @@
-<div class="card mb-2">
-  <div>
-    <h4 class="card-title ps-3" [ngClass]="{ status: todo.status }">
-      Title: {{ todo.title }}
-    </h4>
-    <p class="mb-1 ps-3">Description: {{ todo.description }}</p>
-    <p>priority: {{ todo.priority }}</p>
-    <p>status:{{ todo.status }}</p>
-    <p>created date: {{ todo.created }}</p>
-    <p>due date: {{ todo.date }}</p>
+<div class="container-fluid mt-5 col-lg-6 mb-5">
+  <div class="card mb-2" *ngIf="!loading">
+    <div>
+      <h4 class="card-title text-center" [ngClass]="{ status: todo.status }">
+        Title: {{ todo.title }}
+      </h4>
+      <p class="mb-1">Description: {{ todo.description }}</p>
+      <p>priority: {{ todo.priority }}</p>
+      <p>status:{{ todo.status }}</p>
+      <p>created date: {{ todo.created }}</p>
+      <p>due date: {{ todo.date }}</p>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-danger" (click)="remove(todo.id)">Delete</button>
+      <button class="btn btn-success" routerLink="../editTodo/{{ todo.id }}">
+        Edit
+      </button>
+      <button
+        class="btn btn-secondary"
+        *ngIf="todo.status"
+        (click)="toggleStatus()"
+      >
+        Completed
+      </button>
+      <button
+        class="btn btn-secondary"
+        *ngIf="!todo.status"
+        (click)="toggleStatus()"
+      >
+        Not Completed
+      </button>
+    </div>
   </div>
-  <button class="btn btn-danger" (click)="remove(todo.id)">Delete</button>
-  <button class="btn btn-success" routerLink="../editTodo/{{ todo.id }}">
-    Edit
-  </button>
-  <button *ngIf="todo.status" (click)="toggleStatus(false)">Completed</button>
-  <button *ngIf="!todo.status" (click)="toggleStatus(true)">
-    Not Completed
-  </button>
+  <div class="spinner-border m-auto" role="status" *ngIf="loading">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>

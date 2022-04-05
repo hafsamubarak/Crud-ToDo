@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { AuthentictionService } from 'src/app/service/authentiction.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(public authService:AuthentictionService) { }
   local!:boolean;
+  @Input() user!:User;
   ngOnInit(): void {
     this.islocal()
   }

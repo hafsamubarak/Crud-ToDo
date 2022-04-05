@@ -1,10 +1,63 @@
-<div>
-  <input
-    type="text"
-    class="form-control search"
-    placeholder="serach for todos by title"
-    [(ngModel)]="title"
-    (input)="search()"
-  />
+<div class="container-fluid">
+  <div class="div1">
+    <input
+      type="text"
+      class="form-control search"
+      placeholder="serach for todos by title"
+      [(ngModel)]="title"
+      (input)="searchTitle()"
+      (click)="reset()"
+    />
+    <input
+      type="date"
+      class="form-control date"
+      placeholder="serach for todos by Certain Date"
+      [(ngModel)]="date"
+      (input)="sortByField('date', $any($event).target.value)"
+      (click)="reset()"
+    />
+  </div>
+  <div class="dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Filter ToDo
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li>
+        <a class="dropdown-item" (click)="sortAsc()">Ascending date</a>
+      </li>
+      <li><a class="dropdown-item" (click)="sortDesc()">Descending date</a></li>
+      <li class="dropdown-submenu sub">
+        Status
+        <ul class="dropdown-menu">
+          <li class="hover">
+            <a tabindex="-1" (click)="sortByField('status', true)">Completed</a>
+          </li>
+          <li class="dropdown-submenu hover">
+            <a (click)="notCompleted()">Not Completed</a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu sub">
+        Priority
+        <ul class="dropdown-menu">
+          <li class="hover">
+            <a tabindex="-1" (click)="sortByField('priority', 'High')">High</a>
+          </li>
+          <li class="dropdown-submenu hover">
+            <a (click)="sortByField('priority', 'Medium')">Medium</a>
+          </li>
+          <li class="dropdown-submenu hover">
+            <a (click)="sortByField('priority', 'Low')">Low</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>
 <app-card *ngFor="let card of todos" [todo]="card"></app-card>

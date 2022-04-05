@@ -1,7 +1,6 @@
 <div class="container">
-  <div class="d-flex p3-y">
-    <h6>Edit TODO</h6>
-    <div class="mt-1"></div>
+  <div class="p3-y">
+    <h6 class="title">Edit TODO</h6>
   </div>
   <div class="my-3 p-3">
     <form [formGroup]="todoForm">
@@ -9,18 +8,26 @@
         <label for="title">Title</label>
         <input
           type="text"
-          class="form-fontrol"
+          class="form-control"
           formControlName="title"
           id="title"
           placeholder="Title"
           required
         />
+        <span
+          class="text-danger"
+          *ngIf="
+            todoForm.controls['title'].dirty &&
+            todoForm.hasError('required', 'title')
+          "
+          >*Title is Required!</span
+        >
       </div>
       <div class="form-group">
         <label for="description">Description</label>
         <input
           type="text"
-          class="form-fontrol"
+          class="form-control"
           id="description"
           placeholder="Description"
           formControlName="description"
@@ -41,40 +48,40 @@
         <label for="low">Low</label>
       </div>
       <div class="form-group">
-        <label for="date">Due Date</label>
+        <h6>Status</h6>
+        <input type="radio" id="true" formControlName="status" value="true" />
+        <label for="true">Completed</label><br />
+        <input type="radio" id="false" formControlName="status" value="false" />
+        <label for="false">Not Completed</label><br />
+      </div>
+      <div class="form-group none">
+        <label for="date"></label>
         <input
           type="date"
-          class="form-fontrol"
+          class="form-control"
           formControlName="date"
           id="date"
           placeholder="Due Date"
-          [disabled]="disabled"
         />
       </div>
-      <div class="form-group">
-        <label for="status"></label>
-        <input
-          type="date"
-          class="form-fontrol"
-          formControlName="status"
-          placeholder="Due Date"
-          hidden
-        />
-      </div>
-      <div class="form-group">
+      <div class="form-group none">
         <label for="uid"></label>
         <input
-          type="date"
-          class="form-fontrol"
+          type="text"
+          class="form-control"
           formControlName="uid"
           placeholder="Due Date"
-          hidden
         />
       </div>
-      <button type="submit" class="btn btn-success" (click)="update()">
+      <button
+        type="button"
+        class="btn btn-success"
+        [disabled]="!todoForm.valid"
+        (click)="update()"
+      >
         Submit
       </button>
-      <button class="btn btn-danger" (click)="remove(todo.id)">Delete</button>
+      <button class="btn btn-danger" (click)="remove()">Delete</button>
       <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
     </form>
   </div>

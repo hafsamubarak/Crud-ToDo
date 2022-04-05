@@ -53,8 +53,10 @@ export class TodoAddComponent implements OnInit {
     console.log(todo);
     // const id=localStorage.getItem('user') as string;
     // this.userService.updateUSerByID(id,this.to);
-    this.todoService.createTodo(todo);
-    this.router.navigate(['/todoList'])
+    this.todoService.createTodo(todo).then(()=>{
+
+      this.router.navigate(['/todoList'])
+    })
   }
 
 }

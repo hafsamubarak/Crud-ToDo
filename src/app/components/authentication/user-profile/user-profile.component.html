@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <main role="main" class="px-4">
+    <div class="inner-adjust">
+      <div
+        class="pt-3 pb-2 mb-3 border-bottom"
+        *ngIf="authService.userData as user"
+      >
+        <h1 class="h2" style="color: #004f71">User Profile</h1>
+      </div>
+      <!-- Show user data when logged in -->
+      <div class="row" *ngIf="authService.userData as user">
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <!-- <h1>
+                Hello:
+                <strong>{{ user.displayName }}</strong>
+              </h1> -->
+              <p>
+                User ID: <strong>{{ user.uid }}</strong>
+              </p>
+              <p>
+                Email: <strong>{{ user.email }}</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

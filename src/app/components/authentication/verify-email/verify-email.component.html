@@ -1,7 +1,7 @@
-<div class="displayTable" style="margin-top: 10%; padding-bottom: 30px">
+<div class="displayTable">
   <div class="displayTableCell">
     <div class="authBlock">
-      <h3 style="color: #004f71">Thank You for Registering</h3>
+      <h3>Thank You for Registering</h3>
 
       <div class="formGroup" *ngIf="authService.userData as user">
         <p class="text-center">
@@ -20,7 +20,6 @@
           type="button"
           class="btn btnPrimary"
           (click)="authService.sendVerificationEmail()"
-          style="background-color: #004f71; color: #fff; margin-bottom: 15px"
         >
           <i class="fas fa-redo-alt"></i>
           Resend Verification Email
@@ -31,12 +30,7 @@
     <div class="redirectToLogin">
       <span
         >Go back to
-        <Button
-          class="redirect btn"
-          style="background-color: #004f71; color: #fff"
-          routerLink="/login"
-          >Sign in
-        </Button>
+        <Button class="redirect btn" routerLink="/login">Sign in </Button>
         ?</span
       >
     </div>

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs';
 import { Todo } from 'src/app/models/todo.model';
 import { TodosService } from 'src/app/service/todos.service';
 
@@ -22,49 +23,45 @@ export class EditTodoComponent implements OnInit {
       title:['',Validators.required],
       priority:['',Validators.required],
       date:['',Validators.required],
+      status:['',Validators.required],
       description:[''],
-      status:[''],
       created:[''],
       uid:['']
     });
     const id=this.activatedRoute.snapshot.paramMap.get('id');
-    this.todoService.getTodo(id).subscribe((data:any)=>{
+    this.todoService.getTodo(id).pipe(take(1)).subscribe((data:any)=>{
       this.todoForm.setValue(data)
     })
   }
   update(){
+    const id=this.activatedRoute.snapshot.paramMap.get('id')||"";
     const items:Todo={
-    title:this.todoForm.value.title,
+      title:this.todoForm.value.title,
       description:this.todoForm.value.description,
-      priority:this.todoForm.value.priority
+      priority:this.todoForm.value.priority,
+      status:this.todoForm.value.status,
+      id:id,
     }
-    this.todoService.updateTodo(items)
+    console.log(items.status)
+    this.todoService.updateTodo(items).then(()=>{
       this.router.navigate(['/todoList'])
-    // .then(()=>{
+    })
 
-    // }).catch((error)=>{
-    //   console.log(error.message)
-    // })
   }
-  remove(id:any){
-    this.todoService.removeTodo(id);
+  remove(){
+    // console.log(this.todo.id)
+    const id2=this.activatedRoute.snapshot.paramMap.get('id');
+   let message= window.confirm("Are You Sure You want To remove This Todo?!");
+   if(message==true){
+
+    this.todoService.removeTodo(id2);
+    this.cancel();
+   }else{
+     this.cancel();
+   }
   }
   cancel(){
     this.router.navigate(['todoList'])
   }
-  // edit(todo:Todo){
-  //   const todos={
-  //     title:this.todoForm.value.title,
-  //     description:this.todoForm.value.description,
-  //     priority:this.todoForm.value.priority,
-  //     date:this.todoForm.value.date,
-  //     created:new Date().toUTCString(),
-  //     status:true,
-  //     uid:localStorage.getItem('user')
-  //   };
-  //   console.log(todos)
-  //   this.todoService.updateTodo(todos,todo.id);
-  //   this.router.navigate(['/todoList'])
-  // }
 
 }

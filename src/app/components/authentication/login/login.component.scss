@@ -1,3 +1,22 @@
+.container-fluid{
+  margin-top: 78px;
+}
 #forma {
   width: 27rem;
+  h3{
+    letter-spacing: 1px;
+     color: #004f71;
+     text-align: center
+  }
+  input{
+    width: 100%;
+  }
+  .btn{
+    background-color: #38b9db;
+     color: white
+  }
+}
+a{
+  color: #fff;
+  text-decoration: none;
 }

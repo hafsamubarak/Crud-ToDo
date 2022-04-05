@@ -2,7 +2,7 @@ import { User } from "./user.model";
 
 export interface Todo{
   id?:string,
-  title:string,
+  title?:string,
   date?:string,
   status?:boolean,
   priority?:string,

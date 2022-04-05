@@ -21,6 +21,7 @@ import { TodoListComponent } from './components/home/Todo/todo-list/todo-list.co
 import { CardComponent } from './components/home/Todo/card/card.component';
 import { EditTodoComponent } from './components/home/Todo/edit-todo/edit-todo.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UserProfileComponent } from './components/authentication/user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CardComponent,
     EditTodoComponent,
     FooterComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

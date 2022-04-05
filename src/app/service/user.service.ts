@@ -18,8 +18,9 @@ export class UserService {
   getUserById(id:string){
     return this.angularFireStore.collection(this.dbPath).doc(id).valueChanges();
   }
-  updateUSerByID(id:string|undefined,obj:any){
-    return this.angularFireStore.collection(this.dbPath).doc(id).update({"Todos":obj})
+  updateUSerByID(user:User){
+    console.log(user);
+    return this.angularFireStore.collection(this.dbPath).doc(user.uid).update({displayName:user.displayName,email:user.email,password:user.password});
   }
 
 }

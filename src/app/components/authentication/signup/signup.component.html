@@ -1,22 +1,11 @@
 <div class="forma d-flex">
-  <form style="width: 30%" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <!-- 2 column grid layout with text inputs for the first and last names -->
-    <h1
-      style="
-        font-weight: bold;
-        color: #38b9db;
-        margin-bottom: 10%;
-        text-align: center;
-      "
-    >
-      Sign UP
-    </h1>
+    <h1>Sign UP</h1>
 
     <!-- Email input -->
     <div class="form-outline mb-4">
-      <label class="form-label" for="form3Example3" style="color: #004f71"
-        >First Name</label
-      >
+      <label class="form-label" for="form3Example3">First Name</label>
       <input
         type="text"
         id="form3Example3"
@@ -34,16 +23,12 @@
       >
     </div>
     <div class="form-outline mb-4">
-      <label class="form-label" for="displayName2" style="color: #004f71"
-        >Second Name</label
-      >
+      <label class="form-label" for="displayName2">Second Name</label>
       <input type="text" id="displayName2" class="form-control" />
     </div>
 
     <div class="form-outline mb-4">
-      <label class="form-label" for="form3Example3" style="color: #004f71"
-        >Email address</label
-      >
+      <label class="form-label" for="form3Example3">Email address</label>
       <input
         type="email"
         class="form-control"
@@ -61,12 +46,7 @@
     </div>
     <!-- Password input -->
     <div class="form-outline mb-4 input-group">
-      <label
-        class="form-label"
-        for="form3Example4"
-        style="color: #004f71; flex-basis: 100%"
-        >Password</label
-      >
+      <label class="form-label" for="form3Example4">Password</label>
       <input
         [type]="fieldTextType ? 'text' : 'password'"
         class="form-control"
@@ -74,7 +54,7 @@
         required
       />
       <div class="input-group-append">
-        <span class="input-group-text" style="height: 100%">
+        <span class="input-group-text">
           <i
             class="fa"
             [ngClass]="{
@@ -95,12 +75,7 @@
       >
     </div>
     <div class="form-outline mb-4 input-group">
-      <label
-        class="form-label"
-        for="password2"
-        style="color: #004f71; flex-basis: 100%"
-        >Confirm Password</label
-      >
+      <label class="form-label" for="password2">Confirm Password</label>
       <input
         [type]="repeatFieldTextType ? 'text' : 'password'"
         class="form-control"
@@ -109,7 +84,7 @@
         required
       />
       <div class="input-group-append">
-        <span class="input-group-text" style="height: 100%">
+        <span class="input-group-text">
           <i
             class="fa"
             [ngClass]="{
@@ -140,12 +115,6 @@
       <button
         type="button"
         class="btn justify-content-center"
-        style="
-          background-color: #004f71;
-          color: white;
-          margin-left: 40%;
-          margin-bottom: 5%;
-        "
         type="submit"
         [disabled]="!signupForm.valid"
       >

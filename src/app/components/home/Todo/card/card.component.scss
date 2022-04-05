@@ -4,3 +4,21 @@
 .noStatus {
   text-decoration: none;
 }
+.card {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 15px;
+}
+.btn{
+  width:fit-content;
+  margin-right: 10px;
+    margin-left: 10px;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+}
+.spinner-border{
+  display: block
+}

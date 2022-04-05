@@ -1,0 +1,22 @@
+.displayTable{
+  margin-top: 10%;
+   padding-bottom: 30px;
+   .authBlock{
+     h3{
+      color: #004f71;
+     }
+     .formGroup{
+       .btnPrimary{
+        background-color: #004f71;
+         color: #fff;
+         margin-bottom: 15px
+       }
+     }
+   }
+   .redirectToLogin{
+     .redirect{
+      background-color: #004f71; color: #fff
+     }
+   }
+
+}
