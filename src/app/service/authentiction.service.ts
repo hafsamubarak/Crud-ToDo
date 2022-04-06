@@ -40,6 +40,7 @@ export class AuthentictionService {
        window.alert(error.message);
      })
    }
+   // sending user data and receiveing it
    setUserData(user:User,displayName:string){
      const userRef:AngularFirestoreDocument<any>=this.afs.doc(`users/${user.uid}`);
      console.log(user);
@@ -54,18 +55,19 @@ export class AuthentictionService {
        merge:true
      })
    }
-   authLogin(provider:any){
-     return this.firebaseAuth.signInWithPopup(provider)
-     .then((result)=>{
-       this.ngZone.run(()=>{
-         this.router.navigate(['home']);
-       })
-     }).then(()=> {
-      window.location.reload();
-    }).catch((error) => {
-      window.alert(error)
-    })
-   }
+
+  //  authLogin(provider:any){
+  //    return this.firebaseAuth.signInWithPopup(provider)
+  //    .then((result)=>{
+  //      this.ngZone.run(()=>{
+  //        this.router.navigate(['home']);
+  //      })
+  //    }).then(()=> {
+  //     window.location.reload();
+  //   }).catch((error) => {
+  //     window.alert(error)
+  //   })
+  //  }
    sendVerificationEmail(){
      return this.firebaseAuth.authState.subscribe(
        (user)=>user?.sendEmailVerification().then(()=>{

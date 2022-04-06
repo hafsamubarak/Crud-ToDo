@@ -18,6 +18,7 @@ export class UserService {
   getUserById(id:string){
     return this.angularFireStore.collection(this.dbPath).doc(id).valueChanges();
   }
+  //this for update user profile but I have not completed it
   updateUSerByID(user:User){
     console.log(user);
     return this.angularFireStore.collection(this.dbPath).doc(user.uid).update({displayName:user.displayName,email:user.email,password:user.password});

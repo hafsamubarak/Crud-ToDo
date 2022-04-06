@@ -19,6 +19,7 @@ export class EditTodoComponent implements OnInit {
   constructor(private todoService:TodosService,private formBuilder:FormBuilder,private router:Router,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    //displaying todo info when editing
     this.todoForm=this.formBuilder.group({
       title:['',Validators.required],
       priority:['',Validators.required],

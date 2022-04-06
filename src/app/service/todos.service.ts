@@ -10,6 +10,7 @@ export class TodosService {
 
   constructor(private angularFireStore:AngularFirestore) { }
   private dbPath='/Todos';
+  //displaying all todos
   findAllTodos(){
     return this.angularFireStore.collection(this.dbPath).snapshotChanges().pipe(take(1), map((res:any)=>
     res.map(
@@ -19,6 +20,7 @@ export class TodosService {
     )));
   }
 
+  //get one todo
   getTodo(id:any){
     return this.angularFireStore.collection(this.dbPath).doc(id).valueChanges();
   }

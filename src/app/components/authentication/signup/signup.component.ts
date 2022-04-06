@@ -33,9 +33,11 @@ export class SignupComponent implements OnInit {
     this.authService.signUp(this.signupForm.value);
     this.router.navigate(['home'])
   }
+  //toggle the first show/hide password
   toggle(){
     this.fieldTextType=!this.fieldTextType;
   }
+   //toggle the second show/hide password
   toggleRepeat(){
     this.repeatFieldTextType=!this.repeatFieldTextType;
   }
