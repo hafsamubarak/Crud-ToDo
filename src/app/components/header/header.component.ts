@@ -5,22 +5,21 @@ import { AuthentictionService } from 'src/app/service/authentiction.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(public authService:AuthentictionService) { }
-  local!:boolean;
-  @Input() user!:User;
+  constructor(public authService: AuthentictionService) {}
+  local!: boolean;
+  @Input() user!: User;
   ngOnInit(): void {
-    this.islocal()
+    this.islocal();
   }
-  islocal(){
-    if(localStorage.getItem('user')){
-      this.local=true;
-    }else{
-      this.local=false;
+  //this function see if the user logged in or not to toggle the login/signup buttons
+  islocal() {
+    if (localStorage.getItem('user')) {
+      this.local = true;
+    } else {
+      this.local = false;
     }
   }
-
 }

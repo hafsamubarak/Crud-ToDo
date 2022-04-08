@@ -16,6 +16,7 @@
       <span
         class="text-danger"
         *ngIf="
+          signupForm.controls['displayName'].touched &&
           signupForm.controls['displayName'].dirty &&
           signupForm.hasError('required', 'displayName')
         "
@@ -38,6 +39,7 @@
       <span
         class="text-danger"
         *ngIf="
+          signupForm.controls['email'].touched &&
           signupForm.controls['email'].dirty &&
           signupForm.hasError('required', 'email')
         "
@@ -65,15 +67,16 @@
           ></i>
         </span>
       </div>
-      <span
-        class="text-danger"
-        *ngIf="
-          signupForm.controls['password'].dirty &&
-          signupForm.hasError('required', 'password')
-        "
-        >*Password is Required!</span
-      >
     </div>
+    <span
+      class="text-danger"
+      *ngIf="
+        signupForm.controls['password'].touched &&
+        signupForm.controls['password'].dirty &&
+        signupForm.hasError('required', 'password')
+      "
+      >*Password is Required!</span
+    >
     <div class="form-outline mb-4 input-group">
       <label class="form-label" for="password2">Confirm Password</label>
       <input
@@ -98,6 +101,7 @@
       <span
         class="text-danger"
         *ngIf="
+          signupForm.controls['confirmPassword'].touched &&
           signupForm.controls['confirmPassword'].dirty &&
           signupForm.hasError('required', 'confirmPassword')
         "

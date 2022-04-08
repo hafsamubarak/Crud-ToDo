@@ -18,6 +18,7 @@
         <span
           class="text-danger"
           *ngIf="
+            todoForm.controls['title'].touched &&
             todoForm.controls['title'].dirty &&
             todoForm.hasError('required', 'title')
           "

@@ -7,39 +7,56 @@ import { ConfirmPasswordValidator } from './confirm-password.validator';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  signupForm!:FormGroup;
-  signUp!:any;
-  fieldTextType!:boolean;
-  repeatFieldTextType!:boolean;
+  signupForm!: FormGroup;
+  signUp!: any;
+  fieldTextType!: boolean;
+  repeatFieldTextType!: boolean;
 
-  constructor(public authService:AuthentictionService,private formBuilder:FormBuilder,private router:Router) { }
+  constructor(
+    public authService: AuthentictionService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.signupForm=this.formBuilder.group({
-      displayName:['',[Validators.required]],
-      email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(6)]],
-      confirmPassword:['',Validators.required]
-    },
-    {
-      validator:ConfirmPasswordValidator('password','confirmPassword')
-    }
-    )
+    //validation of signup form
+    this.signupForm = this.formBuilder.group(
+      {
+        displayName: [
+          '',
+          //pattern to prevent empty string
+          [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)],
+        ],
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/),
+          ],
+        ],
+        confirmPassword: ['', Validators.required],
+      },
+      {
+        validator: ConfirmPasswordValidator('password', 'confirmPassword'),
+      }
+    );
   }
-  onSubmit(){
+  //when submitting signup form to firebase authentication
+  onSubmit() {
     this.authService.signUp(this.signupForm.value);
-    this.router.navigate(['home'])
+    this.router.navigate(['home']);
   }
   //toggle the first show/hide password
-  toggle(){
-    this.fieldTextType=!this.fieldTextType;
+  toggle() {
+    this.fieldTextType = !this.fieldTextType;
   }
-   //toggle the second show/hide password
-  toggleRepeat(){
-    this.repeatFieldTextType=!this.repeatFieldTextType;
+  //toggle the second show/hide password
+  toggleRepeat() {
+    this.repeatFieldTextType = !this.repeatFieldTextType;
   }
-
 }

@@ -1,27 +1,27 @@
-.container-fluid{
+.container-fluid {
   margin-top: 90px;
-   display: flex;
-    justify-content: center;
-    .div{
-      display: flex;
-      flex-direction: column;
-      margin-right: 40px;
-    }
-    input{
-      margin-bottom: 20px;
-    }
+  display: flex;
+  justify-content: center;
+  .div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
   }
-  .dropdown{
-    margin-left: 40px;
-    align-self: center;
+  input {
+    margin-bottom: 20px;
   }
+}
+.dropdown {
+  margin-left: 40px;
+  align-self: center;
+}
 .dropdown-submenu {
   position: relative;
 }
-.sub{
+.sub {
   margin-left: 13px;
 }
-.hover:hover{
+.hover:hover {
   background-color: #ccc;
 }
 
