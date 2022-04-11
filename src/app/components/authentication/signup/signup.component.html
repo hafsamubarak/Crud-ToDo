@@ -95,20 +95,20 @@
           ></i>
         </span>
       </div>
-      <span
-        class="text-danger"
-        *ngIf="
-          signupForm.controls['confirmPassword'].touched &&
-          signupForm.hasError('required', 'confirmPassword')
-        "
-        >*Password Confirm is Required!</span
-      >
-      <span
-        class="text-danger"
-        *ngIf="f.confirmPassword.errors?.['confirmPasswordValidator']"
-        >Confirm Password doesn't match!</span
-      >
     </div>
+    <span
+      class="text-danger"
+      *ngIf="
+        signupForm.controls['confirmPassword'].touched &&
+        signupForm.hasError('required', 'confirmPassword')
+      "
+      >*Password Confirm is Required!</span
+    >
+    <span
+      class="text-danger"
+      *ngIf="f.confirmPassword.errors?.['confirmPasswordValidator']"
+      >Confirm Password doesn't match!</span
+    >
 
     <!-- Submit button -->
     <div class="d-flex">
