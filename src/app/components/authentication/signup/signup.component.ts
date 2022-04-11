@@ -46,6 +46,9 @@ export class SignupComponent implements OnInit {
       }
     );
   }
+  get f() {
+    return this.signupForm.controls;
+  }
   //when submitting signup form to firebase authentication
   onSubmit() {
     this.authService.signUp(this.signupForm.value);

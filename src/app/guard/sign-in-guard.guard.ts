@@ -28,7 +28,9 @@ export class SignInGuardGuard implements CanActivate {
     | UrlTree {
     const user = localStorage.getItem('user');
     if (user != null) {
-      this.router.navigate(['home']);
+      this.router.navigate(['home']).then(() => {
+        window.location.reload();
+      });
       return false;
     } else {
       return true;

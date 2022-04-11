@@ -16,7 +16,7 @@
         <span
           class="text-danger"
           *ngIf="
-            loginForm.controls['email'].dirty &&
+            loginForm.controls['email'].touched &&
             loginForm.hasError('required', 'email')
           "
           >*Email is Required!</span
@@ -36,7 +36,7 @@
         <span
           class="text-danger"
           *ngIf="
-            loginForm.controls['password'].dirty &&
+            loginForm.controls['password'].touched &&
             loginForm.hasError('required', 'password')
           "
           >*Password is Required!</span

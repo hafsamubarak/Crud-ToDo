@@ -17,7 +17,6 @@
         class="text-danger"
         *ngIf="
           signupForm.controls['displayName'].touched &&
-          signupForm.controls['displayName'].dirty &&
           signupForm.hasError('required', 'displayName')
         "
         >*First Name is Required!</span
@@ -40,7 +39,6 @@
         class="text-danger"
         *ngIf="
           signupForm.controls['email'].touched &&
-          signupForm.controls['email'].dirty &&
           signupForm.hasError('required', 'email')
         "
         >*Email is Required!</span
@@ -72,7 +70,6 @@
       class="text-danger"
       *ngIf="
         signupForm.controls['password'].touched &&
-        signupForm.controls['password'].dirty &&
         signupForm.hasError('required', 'password')
       "
       >*Password is Required!</span
@@ -102,14 +99,13 @@
         class="text-danger"
         *ngIf="
           signupForm.controls['confirmPassword'].touched &&
-          signupForm.controls['confirmPassword'].dirty &&
           signupForm.hasError('required', 'confirmPassword')
         "
         >*Password Confirm is Required!</span
       >
       <span
         class="text-danger"
-        *ngIf="signupForm.errors?.['confirmPasswordValidator']"
+        *ngIf="f.confirmPassword.errors?.['confirmPasswordValidator']"
         >Confirm Password doesn't match!</span
       >
     </div>
