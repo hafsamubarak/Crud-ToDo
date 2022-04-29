@@ -1,6 +1,6 @@
 # WEBWAngularFirebaseCRUD
 
-- It's a simple Todo App that enables the user to add, edir and delete his todos.
+- It's a simple Todo App that enables the user to add, edit and delete his todos.
 
 # Installation and setup:
 
